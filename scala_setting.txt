@@ -1,0 +1,13 @@
+<scala 사용을 위한 환경 구축>
+- 기존에 JDK 깔려있는 상태 (없을 시 설치)
+    - java -version을 통해 확인 가능
+- coursier 홈페이지에서 exe 파일 다운 후 실행하거나 Scala 홈페이지에서 CLI 다운
+- 설치가 되면 scala> 라고 뜨는데 여기에 테스트 코드 실행해보고 결과가 나오면 완료
+    - 테스트용 코드
+        val message = "Hello, Scala!"
+        println(message)
+        2 + 3 * 5
+
+<공부 참고할 사이트>
+- 공식 사이트 https://docs.scala-lang.org/ko/tutorials/scala-for-java-programmers.html
+
