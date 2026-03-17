@@ -1,0 +1,29 @@
+# Build tools
+target/
+project/target/
+project/project/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# User specific or temp files
+/httpRequests/
+.DS_Store
+
+# IntelliJ 내부 캐시 및 인덱스
+.idea/modules.xml
+.idea/modules/
+.idea/libraries/
+.idea/artifacts/
+.idea/dataSources/
+.idea/compiler.xml
+.idea/jarRepositories.xml
+
+# 개인용 레이아웃 및 환경 설정
+.idea/workspace.xml
+.idea/shelf/
+.idea/vcs.xml
+
+.bsp
