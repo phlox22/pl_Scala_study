@@ -4,9 +4,17 @@ import scala.collection.mutable
 class Pair(var car: Any = null, var cdr: Any = null)
 
 object PairAssignment {
+  //--- Exercise 1: c++(문제 코드) -> scala ---
+  def countPairs(x: Any): Int = {
+    x match { //패턴 매칭 - c++의 switch문과 유사
+      case p: Pair => // x가 Pair 타입인지 확인
+        countPairs(p.car) + countPairs(p.cdr) + 1  // car와 cdr을 재귀적으로 방문하고 자신을 더함
+      case _ => 0 //Pair가 아닌 경우(null 포함)
+    }
+  }
 
   // --- Exercise 2: 고유한 쌍 개수 세기 ---
-  // 보조 자료구조(Set)를 사용하여 중복 카운팅을 방지함 [cite: 44]
+  // 보조 자료구조(Set)를 사용하여 중복 카운팅을 방지함
   def countDistinctPairs(x: Any): Int = {
     val visited = mutable.Set[Pair]()
     def count(item: Any): Int = item match {
@@ -22,7 +30,7 @@ object PairAssignment {
   }
 
   // --- Exercise 3: 순환 탐지 ---
-  // cdr을 따라가며 무한 루프 여부를 판별함 [cite: 47, 48]
+  // cdr을 따라가며 무한 루프 여부를 판별함
   def hasCycle(x: Any): Boolean = {
     val visited = mutable.Set[Pair]()
     def check(item: Any): Boolean = item match {
@@ -38,7 +46,6 @@ object PairAssignment {
   }
 
   // --- Exercise 4: 상수 공간 순환 탐지 ---
-  // O(1) 공간만을 사용하는 토끼와 거북이 알고리즘 [cite: 51]
   def hasCycleOptimized(x: Any): Boolean = {
     var slow: Any = x
     var fast: Any = x
@@ -58,22 +65,5 @@ object PairAssignment {
       if (slow == fast) return true
     }
     false
-  }
-
-  // --- 실행 테스트 ---
-  def main(args: Array[String]): Unit = {
-    println("=== Exercise 2: Distinct Count ===")
-    val p3 = new Pair('c', null)
-    val p2 = new Pair(p3, p3)
-    val p1 = new Pair(p2, p2)
-    println(s"Actual Pairs: 3, Counted: ${countDistinctPairs(p1)}")
-
-    println("\n=== Exercise 3 & 4: Cycle Detection ===")
-    val c3 = new Pair('z', null)
-    val c2 = new Pair('y', c3)
-    val c1 = new Pair('x', c2)
-    c3.cdr = c1 // 순환 생성 [cite: 48]
-    println(s"Ex 3 (Set): ${hasCycle(c1)}")
-    println(s"Ex 4 (O(1)): ${hasCycleOptimized(c1)}")
   }
 }
