@@ -5,7 +5,7 @@ class Pair(var car: Any = null, var cdr: Any = null)
   // C++의 count_pairs(Pair* x) 함수
   def countPairs(x: Any): Int = {
     x match { //패턴 매칭 - c++의 switch문과 유사
-      case p: Pair => // x가 Pair 타입인지 확인
+      case p: Node => // x가 Pair 타입인지 확인
         countPairs(p.car) + countPairs(p.cdr) + 1  // car와 cdr을 재귀적으로 방문하고 자신을 더함
       case _ => 0 //Pair가 아닌 경우(null 포함)
     }
